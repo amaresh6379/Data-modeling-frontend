@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div *ngIf="!imageTab" class="outerDiv" fxLayout="row wrap" fxLayoutGap="50px">
+  <div *ngFor="let item of workerDetails?.imageDetails">
+    <div fxLayout="column" fxLayoutAlign="center center" class="imageBox">
+      <h4>Task {{ item?.id }}</h4>
+      <button (click)="startTask(item?.id)">Start</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="imageTab">
+    <ng-container *ngTemplateOutlet="imageTabTemplate"></ng-container>
+</div>
+
+<ng-template #imageTabTemplate>
+ <div fxLayout="column" class="outerDiv">
+     <div fxLayout="row wrap" fxLayoutGap="10px" >
+    <div *ngFor="let image of workerDetails?.urlArray" >
+         <mat-radio-group [(ngModel)]="selectedValue[image]"> 
+           <div fxLayout="column" fxLayoutAlign="center center">
+               <img [src]="image.url" class="imageSize">
+               <mat-radio-button value="after"></mat-radio-button>
+           </div>
+       </mat-radio-group>
+   </div>
+</div>
+    <button class="buttonClass" (click)="saveSubmission()">Submit</button>
+ </div>
+</ng-template>
+
+

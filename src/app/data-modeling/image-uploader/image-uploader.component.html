@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+<div fxLayout="column" fxLayoutAlign="center center" class="taskCreator">
+    <div fxLayout="column" fxLayoutAlign="center center" class="taskContainer">
+        <div class="taskLabel">Create Task:</div>
+        <div fxLayout="row" fxLayoutGap="10px">
+            <label for="">Enter task Title</label>
+            <input type="text">
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" class="imageConatainer">
+            <div class="imageBox" (click)="UploadImage()">+</div>
+            <button mat-raised-button color="primary"  > Submit</button>
+        </div>
+
+
+    </div>
+</div>

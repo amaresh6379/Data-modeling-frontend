@@ -1,0 +1,21 @@
+<div class="outer-div">
+    <h2 mat-dialog-title>Upload Image</h2>
+    <mat-dialog-content class="mat-typography">
+      <div class="dialogWarning">
+        Accepted formats are jpg, jpeg, png, gif, webp. Use your own photos instead of downloading images from the internet. Images that are not genuine may be rejected by the system.
+      </div>
+      <div fxLayout="column" fxLayoutAlign="center center" class="uploadArea">
+        <div>
+          Drag and drop files here
+        </div>
+        <div>or</div>
+        <input type="file" (change)="imageDisplay($event)">
+      </div>
+      <img width="100%" *ngIf='imageSrc' [src]='imageSrc' alt="" class="image">
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Upload</button>
+    </mat-dialog-actions>
+  </div>
+  
