@@ -11,6 +11,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import {MatRadioModule} from '@angular/material/radio';
     MatDialogModule,
     HttpClientModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    FormsModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
+    RouterModule
 
   ],
   providers: [],

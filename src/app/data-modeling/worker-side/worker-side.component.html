@@ -14,12 +14,14 @@
 
 <ng-template #imageTabTemplate>
  <div fxLayout="column" class="outerDiv">
+    <h1>Choose the best thumbNail.</h1>
      <div fxLayout="row wrap" fxLayoutGap="10px" >
     <div *ngFor="let image of workerDetails?.urlArray" >
-         <mat-radio-group [(ngModel)]="selectedValue[image]"> 
+      {{image.id}}
+         <mat-radio-group [(ngModel)]="selectedValues"> 
            <div fxLayout="column" fxLayoutAlign="center center">
                <img [src]="image.url" class="imageSize">
-               <mat-radio-button value="after"></mat-radio-button>
+               <mat-radio-button [value]="image.id"></mat-radio-button>
            </div>
        </mat-radio-group>
    </div>

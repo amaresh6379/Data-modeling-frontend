@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ImageService } from '../service/image.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-worker-side',
@@ -15,10 +17,13 @@ export class WorkerSideComponent {
     urlArray:[]
   };
   imageTab = false;
-  selectedValue = {};
+  selectedValues: { [key: string]: any } = {};
+  // private _snackBar: any;
   constructor(
     private imageService: ImageService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private _snackBar: MatSnackBar,
+    private router: Router
   ){
 
   }
@@ -37,7 +42,20 @@ export class WorkerSideComponent {
     }))
   }
   saveSubmission(){
-    console.log(this.selectedValue);
+    console.log(this.selectedValues);
+    const data= {
+      userId:2,
+      optionsId:this.selectedValues
+    }
+    this.imageService.createOptionSubmission(data).subscribe((res:any)=>{
+      if(res ){
+        console.log("res",res);
+        this._snackBar.open("You successfully completed the task", "ok");
+        this.imageTab = false;
+        
+      }
+      
+    });
     
   }
 

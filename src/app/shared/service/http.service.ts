@@ -10,7 +10,7 @@ export class HttpService {
   constructor(private httpService:HttpClient) {
 
    }
-   postMethod(data:any,url:string){
+   postMethod(url:string,data:any){
     return this.httpService.post(this.apiUrl +url,data)
 
    }

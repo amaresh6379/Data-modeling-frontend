@@ -17,5 +17,10 @@ export class ImageService {
   getParticularImage(id:number){
     return this.httpService.getMethod(`/task/${id}/details`,{id:id})
   }
+  createOptionSubmission(data:any){
+    console.log("data",data);
+    
+    return this.httpService.postMethod('/task/submission',data)
+  }
 
 }
