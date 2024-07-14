@@ -18,9 +18,10 @@ export class ImageService {
     return this.httpService.getMethod(`/task/${id}/details`,{id:id})
   }
   createOptionSubmission(data:any){
-    console.log("data",data);
-    
     return this.httpService.postMethod('/task/submission',data)
+  }
+  getTaskReport(id:number){
+    return this.httpService.getMethod(`/task/${id}/report`)
   }
 
 }

@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { provideWalletAdapter } from '@heavy-duty/wallet-adapter';
 
 @NgModule({
   declarations: [
@@ -34,10 +36,12 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
-    RouterModule
+    RouterModule,
+    MatProgressBarModule,
+    // HdWalletAdapterModule.forRoot()
 
   ],
-  providers: [],
+  providers: [provideWalletAdapter()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

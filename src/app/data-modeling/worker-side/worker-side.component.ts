@@ -35,11 +35,17 @@ export class WorkerSideComponent {
       this.workerDetails.imageDetails = res;
     }))
   }
-  startTask(id: any){
+  startTask(id: any,isAdmin ?: any){
     this.subscriptionObj.add(this.imageService.getParticularImage(id).subscribe((res:any)=>{
        this.workerDetails.urlArray = res.options.map((res: any) => res);
       this.imageTab = true;
-    }))
+    }));
+    if(isAdmin){
+      this.router.navigate(['/response',id]);
+
+
+    }
+    
   }
   saveSubmission(){
     console.log(this.selectedValues);
@@ -49,7 +55,6 @@ export class WorkerSideComponent {
     }
     this.imageService.createOptionSubmission(data).subscribe((res:any)=>{
       if(res ){
-        console.log("res",res);
         this._snackBar.open("You successfully completed the task", "ok");
         this.imageTab = false;
         

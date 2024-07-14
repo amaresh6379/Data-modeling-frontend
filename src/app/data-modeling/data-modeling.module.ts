@@ -10,6 +10,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import { TaskDisplayComponent } from './task-display/task-display.component';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ImageResponseComponent } from './image-response/image-response.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -19,7 +21,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   declarations: [
     ImageUploaderComponent,
     WorkerSideComponent,
-    TaskDisplayComponent
+    TaskDisplayComponent,
+    ImageResponseComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +32,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatCheckboxModule,
     MatRadioModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressBarModule
+
 
   ]
 })

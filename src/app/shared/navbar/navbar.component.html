@@ -1,5 +1,33 @@
 <div class="navBar" fxLayout="row" fxLayoutAlign="center center">
     <div>MTruck</div>
-    <button mat-button>Connect Wallet</button>
+    <button mat-button (click)="ConnectWallet()">Connect Wallet</button>
+</div>
+<div *ngIf="imageTab">
+  <ng-container *ngTemplateOutlet="WalletArea"></ng-container>
+</div>
+<ng-template #WalletArea>
+  <div>
+    <header>
+      <h1>Wallet Adapter Example (Raw)</h1>
+    </header>
+
+    <main>
+      <section>
+        <p>
+          Wallet:
+
+          {{ walletName() }}
+        </p>
+
+        <p>Status: {{ connected() ? 'connected' : 'disconnected' }}</p>
+        <div *ngIf="publicKey() as publicKey">
+          <p>Public Key: {{ publicKey.toBase58() }}</p>
+        </div>
+
+        
+      </section>
+    </main>
   </div>
+
+</ng-template>
   

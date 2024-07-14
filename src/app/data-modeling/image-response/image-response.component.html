@@ -1,0 +1,10 @@
+<app-navbar></app-navbar>
+<div fxLayout="column" fxLayoutGap="50px" class="outerDiv">
+    <div *ngFor='let data of responseData?.options' class="imageSize">
+        <div  class="responseContainer">
+            <img [src]="data.url" alt=""class="imageSize">
+            {{data?.submissions?.length}}
+            <mat-progress-bar mode="determinate" [value]="data?.submissions?.length"></mat-progress-bar>
+        </div>
+    </div>
+</div>
