@@ -1,33 +1,64 @@
 <div class="navBar" fxLayout="row" fxLayoutAlign="center center">
-    <div>MTruck</div>
-    <button mat-button (click)="ConnectWallet()">Connect Wallet</button>
+  <div>MTruck</div>
+  <button mat-button (click)="connectionStatus ? onDisconnect() : onConnect()" >{{connectionStatus ? 'Disconnect Wallet' : 'connect Wallet'}}</button>
 </div>
-<div *ngIf="imageTab">
-  <ng-container *ngTemplateOutlet="WalletArea"></ng-container>
-</div>
-<ng-template #WalletArea>
-  <div>
-    <header>
-      <h1>Wallet Adapter Example (Raw)</h1>
-    </header>
+<!-- <main>
+  <header>
+    <h1>Wallet Adapter Example (Raw)</h1>
+  </header>
 
-    <main>
-      <section>
-        <p>
-          Wallet:
+  <section>
+    <div>
+      <p>
+        Wallet:
 
-          {{ walletName() }}
-        </p>
+        {{ walletName() }}
+      </p>
 
-        <p>Status: {{ connected() ? 'connected' : 'disconnected' }}</p>
-        <div *ngIf="publicKey() as publicKey">
-          <p>Public Key: {{ publicKey.toBase58() }}</p>
+      <p>Status: {{ connected() ? 'connected' : 'disconnected' }}</p>
+
+      <!-- @if (publicKey(); as publicKey) {
+        <p>Public Key: {{ publicKey.toBase58() }}</p>
+
+      } -->
+    <!-- </div> -->
+
+    <!-- <fieldset>
+      <legend>Select a wallet:</legend>
+
+      <div>
+        <input
+          id="select-wallet-empty"
+          [formControl]="selectWalletControl"
+          [value]="null"
+          type="radio"
+          name="walletName"
+        />
+        <label for="select-wallet-empty">None</label>
+      </div>
+
+      @for (wallet of wallets(); track wallet.adapter.name) {
+        <div>
+          <input
+            [id]="'select-wallet-' + wallet.adapter.name"
+            [formControl]="selectWalletControl"
+            [value]="wallet.adapter.name"
+            type="radio"
+            name="walletName"
+          />
+          <label [for]="'select-wallet-' + wallet.adapter.name">
+            {{ wallet.adapter.name }}
+          </label>
         </div>
+      }
+    </fieldset> -->
 
-        
-      </section>
-    </main>
-  </div>
+    <!-- <button  (click)="onConnect()">
+      Connect
+    </button>
+    <button [disabled]="!connected()" (click)="onDisconnect()">
+      Disconnect
+    </button>
+  </section> -->
+<!-- </main> -->
 
-</ng-template>
-  

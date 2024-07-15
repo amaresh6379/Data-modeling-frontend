@@ -11,7 +11,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -38,7 +38,8 @@ import { provideWalletAdapter } from '@heavy-duty/wallet-adapter';
     BrowserAnimationsModule,
     RouterModule,
     MatProgressBarModule,
-    // HdWalletAdapterModule.forRoot()
+    // HdWalletAdapterModule.forRoot().
+    ReactiveFormsModule
 
   ],
   providers: [provideWalletAdapter()],
