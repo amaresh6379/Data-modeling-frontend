@@ -1,10 +1,16 @@
 <app-navbar></app-navbar>
-<div fxLayout="column" fxLayoutGap="50px" class="outerDiv">
-    <div *ngFor='let data of responseData?.options' class="imageSize">
-        <div  class="responseContainer">
-            <img [src]="data.url" alt=""class="imageSize">
-            {{data?.submissions?.length}}
-            <mat-progress-bar mode="determinate" [value]="data?.submissions?.length"></mat-progress-bar>
-        </div>
+<div class="outerDiv">
+    <h1 class="titleCard">{{responseData?.Name}}</h1>
+    <div *ngFor='let data of responseData?.options' class="responseContainer" fxfill="70">
+      <div fxFlex="30">
+        <img [src]="data.url" alt="Image" class="imageSize" >
+      </div>
+      <div fxFlex="70">
+        <h3>Submission: {{data?.submissions?.length}}</h3>
+      </div>
+    </div>
+    <div *ngIf="finalOptionReponse" class="finalResult">
+        <h3>The Image with the highest submission: {{finalOptionReponse?.submissions?.length}}</h3>
+        <img [src]="finalOptionReponse?.url" alt="Image" class="imageSize">
     </div>
 </div>

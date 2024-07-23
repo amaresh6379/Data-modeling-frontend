@@ -23,6 +23,7 @@ export class sharedService{
             disableClose: true
         });
     }
+    
     connectToWallet(data:any){
         return this.httpService.postMethod('/user/wallet',{data});
     }

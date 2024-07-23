@@ -1,16 +1,27 @@
-<app-navbar></app-navbar>
-<div fxLayout="column" fxLayoutAlign="center center" class="taskCreator">
-    <div fxLayout="column" fxLayoutAlign="center center" class="taskContainer">
-        <div class="taskLabel">Create Task:</div>
-        <div fxLayout="row" fxLayoutGap="10px">
-            <label for="">Enter task Title</label>
-            <input type="text">
-        </div>
-        <div fxLayout="column" fxLayoutAlign="center center" class="imageConatainer">
-            <div class="imageBox" (click)="UploadImage()">+</div>
-            <button mat-raised-button color="primary"  > Submit</button>
-        </div>
+<app-navbar (signatureDetails)="handleSignatureDetails($event)"></app-navbar>
 
+<div  class="taskCreator">
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <h1>Welcome to M Truck</h1>
+        <h3>Your one stop solution to get your data labelled.</h3>
+
+    </div>
+    <div fxLayout="column"  class="taskContainer">
+        <div class="taskLabel">Create Task:</div>
+            <label for="">Task details</label>
+            <input type="text" placeholder="what is your task about?">
+        <label for="">Add Image</label>
+        <div fxLayout="row" fxLayoutAlign="center center" class="imageConatainer">
+            <div *ngFor="let image of imageArray" fxLayout="row" fxLayoutGap="20px">
+                <img [src]="image" alt="" class="imageUrl">
+            </div>
+            <div class="imageBox" (click)="UploadImage()"><b>+</b></div>
+        </div>
+        
+        
+    </div>
+    <div fxLayoutAlign="center center" class="buttonClass" >
+        <button mat-raised-button color="primary" (click)="PayAmount()"> {{imageArray?.length ? 'Pay0.01Sol' : 'submit'}}</button>
 
     </div>
 </div>

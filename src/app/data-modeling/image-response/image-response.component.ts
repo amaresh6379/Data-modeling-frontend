@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ImageResponseComponent {
   taskId :  any;
   responseData : any;
+  finalOptionReponse:any;
   constructor(
     private imageServivce : ImageService,
     private route : ActivatedRoute,
@@ -25,14 +26,31 @@ export class ImageResponseComponent {
     this.taskId = +params['id'];  
     })
     this.imageServivce.getTaskReport(this.taskId).subscribe((res)=>{
-      console.log("res",res);
       this.responseData =  res;
-      
+      let max = 0;
+       this.responseData.options.forEach((value:any)=>{
+        let newValue  =  value?.submissions?.length;
+        if(max < newValue){
+          max  =  newValue;
+        }
     })
+    const finalOption  =  this.responseData.options.find((res:any)=>( res?.submissions?.length === max));
+    
+    this.finalOptionReponse = finalOption;
+    console.log("this.finalOptionReponse",this.finalOptionReponse);
+    
+    
+    
 
 
+    
+    
+
+      
+ 
+      
+
+    })
   }
-
-
 
 }

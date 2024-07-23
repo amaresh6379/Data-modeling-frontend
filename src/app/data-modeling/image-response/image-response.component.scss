@@ -1,12 +1,38 @@
-.outerDiv{
-    width: 100vb;
-    height: 100vh;
+.outerDiv {
+  width: 100vw; /* Use vw for viewport width */
+  height: 100vh; /* Full viewport height */
+  // padding: 20px; /* Add some padding around the content */
+  // box-sizing: border-box; /* Include padding in the element's total width and height */
 }
-.responseContainer{
-    margin-top: 50px;
-}
-.imageSize{
-    width: 100px;
-    height: 100px;
 
+.titleCard {
+  text-align: center; /* Center-align the text */
+  margin-bottom: 20px; /* Space below the title */
+}
+
+.responseContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd; /* Optional: adds a border to visualize containers */
+  // margin-bottom: 20px; /* Space below each response container */
+}
+
+.imageSize {
+  width: 150px; /* Fixed width for images */
+  height: 100px; /* Fixed height for images */
+  object-fit: cover; /* Ensures images cover the fixed dimensions */
+  margin-top: 10px; /* Space above the image */
+}
+
+h3 {
+  margin: 0; /* Remove default margin */
+  text-align: center; /* Center-align text */
+}
+.finalResult{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

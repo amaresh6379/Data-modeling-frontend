@@ -23,5 +23,12 @@ export class ImageService {
   getTaskReport(id:number){
     return this.httpService.getMethod(`/task/${id}/report`)
   }
+  getPreSignedUrl(){
+    return this.httpService.getMethod('/user/url');
+  }
+  getUserBalance(data:any){
+    return this.httpService.getMethod('/user/balance',data);
+  }
+
 
 }

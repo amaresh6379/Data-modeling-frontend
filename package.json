@@ -25,6 +25,8 @@
     "@heavy-duty/wallet-adapter-material": "^0.8.4",
     "@material/button": "^14.0.0",
     "@material/snackbar": "^15.0.0-canary.bc9ae6c9c.0",
+    "@solana/web3.js": "^1.95.1",
+    "buffer": "^6.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.7"

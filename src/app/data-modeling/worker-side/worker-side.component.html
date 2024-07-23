@@ -1,12 +1,24 @@
 <app-navbar></app-navbar>
-<div *ngIf="!imageTab" class="outerDiv" fxLayout="row wrap" fxLayoutGap="50px">
-  <div *ngFor="let item of workerDetails?.imageDetails">
-    <div fxLayout="column" fxLayoutAlign="center center" class="imageBox">
-      <h4>Task {{ item?.id }}</h4>
-      <button (click)="startTask(item?.id)">Start</button>
+<div *ngIf="!imageTab" class="outerDiv" >
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100%">
+      <h1>Welcome to M Truck</h1>
+      <button class="CashButton" >Pay me out 0 sol</button>
     </div>
+    <h3>Your Journey to Real Earnings Starts Here!</h3>
+  </div>
+  
+  <div fxLayout="row wrap" fxLayoutGap="50px">
+    <div *ngFor="let item of workerDetails?.imageDetails">
+      <div fxLayout="column" fxLayoutAlign="center center" class="imageBox">
+        <h4>Ready for Task {{ item?.id }}?</h4>
+        <button (click)="startTask(item?.id)">Start Earning Now</button>
+      </div>
+    </div>
+
   </div>
 </div>
+
 
 <div *ngIf="imageTab">
     <ng-container *ngTemplateOutlet="imageTabTemplate"></ng-container>

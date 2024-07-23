@@ -1,5 +1,5 @@
-import { Component, OnInit, computed, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output, computed, inject } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import {
   WalletStore,
   injectConnected,
@@ -8,7 +8,7 @@ import {
   injectWallets,
 } from '@heavy-duty/wallet-adapter';
 import { WalletName } from '@solana/wallet-adapter-base';
-import { Subscription, filter, map, mergeMap, of, switchMap,tap } from 'rxjs';
+import { mergeMap, of, tap } from 'rxjs';
 import { sharedService } from '../service/shared.service';
 
 @Component({
@@ -28,52 +28,45 @@ export class NavbarComponent implements OnInit {
     nonNullable: true,
   });
   connectionStatus: boolean = false;
+  @Output() signatureDetails = new EventEmitter<any>();
+  data: any;
+
   constructor(
     private sharedService: sharedService
-  ){}
+  ) {}
 
   ngOnInit() {
-    
-
+    this.onConnect();
 
   }
 
   onConnect() {
     console.log('Starting to connect wallet');
-    console.log("publicKey",this.publicKey());
-    // this.publicKey.effect((pk:any) => {
-    //   console.log("publicKey", pk);
-    // });
     
     const walletName = 'Phantom' as WalletName<'Phantom'>;
     this._walletStore.selectWallet(walletName);
-    // this._walletStore.selectWallet();
 
-    // this._walletStore.connect().subscribe({
-    //   next: () => console.log('Wallet connected'),
-    //   error: (error) => console.error(error),
-    // })
     this._walletStore.connect().pipe(
       mergeMap(() => {
-        console.log("entered...");
-        const encodedMessage = new TextEncoder().encode("Sign Into mTruck");
-        console.log("encodedMessage", encodedMessage);
-  
+        console.log('entered...');
+        const encodedMessage = new TextEncoder().encode('Sign Into mTruck');
+        console.log('encodedMessage', encodedMessage);
+
         const signMessage$ = this._walletStore.signMessage(encodedMessage);
+        console.log('publicKeyed', this.publicKey());
         if (signMessage$) {
           return signMessage$.pipe(
             tap((res) => {
-              console.log("res", res);
-              console.log("publickey",this.publicKey().toBase58());              
-              const data = {
+              this.data = {
                 signature: res,
-                // publicKey: this.publicKey.toBase58()
-              }
-              this.sharedService.connectToWallet(data).subscribe((res)=>{
-                if(res){
-                  console.log("token",res)
+                publicKey: this.publicKey()
+              };
+              this.sharedService.connectToWallet(this.data).subscribe((res: any) => {
+                if (res && res.token) {
+                  localStorage.setItem('token', res.token);
                 }
               });
+              this.signatureDetails.emit(this.data); // Emit the data here
             })
           );
         } else {
@@ -86,20 +79,9 @@ export class NavbarComponent implements OnInit {
         console.log('Wallet connected');
         this.connectionStatus = true;
       },
-      
       error: (error) => console.error(error)
     });
-
-  // this._walletStore.connect().pipe(
-  //   mergeMap(() => {
-  //     this.onSignMessage(); // Call the onSignMessage method
-  //     return []; // Return an empty observable if you do not need to continue the chain
-  //   })
-  // ).subscribe({
-  //   next: () => console.log('Wallet connected'),
-  //   error: (error) => console.error(error)
-  // });
-}
+  }
 
   onDisconnect() {
     console.log('Starting to disconnect wallet');
@@ -112,6 +94,4 @@ export class NavbarComponent implements OnInit {
       error: (error) => console.error(error),
     });
   }
-
-
 }

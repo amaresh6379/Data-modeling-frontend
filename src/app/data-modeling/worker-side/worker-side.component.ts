@@ -33,7 +33,11 @@ export class WorkerSideComponent {
   ngOnInit(): void{
     this.subscriptionObj.add(this.imageService.getAllImages().subscribe((res: any) =>{
       this.workerDetails.imageDetails = res;
-    }))
+    }));
+    let data = {
+      userId:2
+    }
+    this.subscriptionObj.add(this.imageService.getUserBalance(data))
   }
   startTask(id: any,isAdmin ?: any){
     this.subscriptionObj.add(this.imageService.getParticularImage(id).subscribe((res:any)=>{

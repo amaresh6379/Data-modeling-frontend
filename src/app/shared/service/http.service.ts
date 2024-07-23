@@ -20,6 +20,5 @@ export class HttpService {
    }
    putMethod(url:string,data:any){
     return this.httpService.put(this.apiUrl +url,data)
-
    }
 }
