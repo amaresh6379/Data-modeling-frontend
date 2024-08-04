@@ -37,7 +37,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.onConnect();
-
   }
 
   onConnect() {

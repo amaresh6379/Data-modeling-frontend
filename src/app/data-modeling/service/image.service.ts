@@ -23,11 +23,20 @@ export class ImageService {
   getTaskReport(id:number){
     return this.httpService.getMethod(`/task/${id}/report`)
   }
-  getPreSignedUrl(){
-    return this.httpService.getMethod('/user/url');
+  getPreSignedUrl(data:any){
+    return this.httpService.postMethod('/user/url',data);
   }
-  getUserBalance(data:any){
-    return this.httpService.getMethod('/user/balance',data);
+  getUserBalance(){
+    return this.httpService.getMethod('/user/balance');
+  }
+  createOptions(data:any){
+    return this.httpService.postMethod('/task/options',data)
+  }
+  createTask(data:any){
+    return this.httpService.postMethod('/task',data)
+  }
+  getParticularUserTask(){
+    return this.httpService.getMethod('/')
   }
 
 

@@ -8,7 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { provideWalletAdapter } from '@heavy-duty/wallet-adapter';
+import { AuthInterceptor } from './auth-interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,14 @@ import { provideWalletAdapter } from '@heavy-duty/wallet-adapter';
     ReactiveFormsModule
 
   ],
-  providers: [provideWalletAdapter()],
+  providers: [
+    provideWalletAdapter(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

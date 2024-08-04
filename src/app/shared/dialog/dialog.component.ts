@@ -17,15 +17,10 @@ export class DialogComponent {
   imageDisplay(event:any){
     if(event.target.files && event.target.files[0]){
       const files = event.target.files[0];
-      console.log("files",files);
       this.file = files;
-      
       const reader = new FileReader();
       reader.onload = (event)=>{
         this.imageSrc = event.target?.result;
-        console.log("this.imageSrc",this.imageSrc);
-        
-
       }
 
       reader.readAsDataURL(files);

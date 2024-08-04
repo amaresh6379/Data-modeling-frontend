@@ -1,9 +1,9 @@
-<app-navbar></app-navbar>
+<app-navbar (signatureDetails)="handleSignatureDetails($event)"></app-navbar>
 <div *ngIf="!imageTab" class="outerDiv" >
   <div fxLayout="column" fxLayoutAlign="center center">
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100%">
       <h1>Welcome to M Truck</h1>
-      <button class="CashButton" >Pay me out 0 sol</button>
+      <button class="CashButton" (click)="payMeOut()" >Pay me out {{balanceAmount}} sol</button>
     </div>
     <h3>Your Journey to Real Earnings Starts Here!</h3>
   </div>

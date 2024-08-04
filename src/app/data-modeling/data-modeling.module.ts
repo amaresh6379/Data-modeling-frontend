@@ -13,6 +13,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ImageResponseComponent } from './image-response/image-response.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon'
 
 
 
@@ -35,7 +36,9 @@ import {MatCardModule} from '@angular/material/card';
     FormsModule,
     MatSnackBarModule,
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
+    
 
 
   ]

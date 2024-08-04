@@ -15,7 +15,7 @@ export class HttpService {
 
    }
    getMethod(url:string,data?:any){
-    return this.httpService.get(this.apiUrl +url)
+    return this.httpService.get(this.apiUrl +url,data)
 
    }
    putMethod(url:string,data:any){

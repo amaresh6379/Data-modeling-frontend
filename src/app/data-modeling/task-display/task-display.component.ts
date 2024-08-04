@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ImageService } from '../service/image.service';
 
 @Component({
   selector: 'app-task-display',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./task-display.component.scss']
 })
 export class TaskDisplayComponent {
+
+  constructor(
+    private ImageService:ImageService
+  ){}
+
+  ngOnInit(){
+    this.ImageService.
+  }
 
 }

@@ -2,14 +2,17 @@
 
 <div  class="taskCreator">
     <div fxLayout="column" fxLayoutAlign="center center">
-        <h1>Welcome to M Truck</h1>
+        <div fxLayout="row">
+            <h1>Welcome to M Truck</h1>
+            <button (click)="taskResponse()">View Task Response</button>
+        </div>
         <h3>Your one stop solution to get your data labelled.</h3>
 
     </div>
     <div fxLayout="column"  class="taskContainer">
         <div class="taskLabel">Create Task:</div>
             <label for="">Task details</label>
-            <input type="text" placeholder="what is your task about?">
+            <input type="text" [(ngModel)]='titleName' placeholder="what is your task about?">
         <label for="">Add Image</label>
         <div fxLayout="row" fxLayoutAlign="center center" class="imageConatainer">
             <div *ngFor="let image of imageArray" fxLayout="row" fxLayoutGap="20px">
@@ -21,7 +24,7 @@
         
     </div>
     <div fxLayoutAlign="center center" class="buttonClass" >
-        <button mat-raised-button color="primary" (click)="PayAmount()"> {{imageArray?.length ? 'Pay0.01Sol' : 'submit'}}</button>
+        <button mat-raised-button color="primary" (click)="PayAmount(titleName)"> {{imageArray?.length ? 'Pay0.01Sol' : 'submit'}}</button>
 
     </div>
 </div>
